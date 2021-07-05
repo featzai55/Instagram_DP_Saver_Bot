@@ -6,15 +6,15 @@
     "env" : {
         "BOT_TOKEN" : {
             "description" : "Enter your telegram bot token",
-            "value" : ""
+            "value" : "1601785935:AAFq9ZtvqRswH2nc8eNON90Q_qKqFXQ0tf4"
         },
         "APP_NAME" : {
             "description" : "Enter your heroku app name",
-            "value" : ""
+            "value" : "ftcalculatorbot"
         },
         "TELEGRAM_USERNAME" :{
             "description" : "Enter your telegram username",
-            "value" : ""
+            "value" : "featzai"
         }
     }
 }
