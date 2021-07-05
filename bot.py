@@ -12,9 +12,9 @@ TOKEN = os.getenv("BOT_TOKEN")
 APP_NAME = os.getenv("APP_NAME")
 TELEGRAM_USERNAME = os.getenv("TELEGRAM_USERNAME")
 
-welcome_msg = '''<b>Welcome To the Bot</b>🖐🖐
- <i>Send me anyones instagram username to get their DP</i>
- ex : <b>virat.kohli</b> , <b>thenameisyash</b> etc'''
+welcome_msg = '''<b>Welcome **{message.from_user.first_name}**  </b>
+ <i>Send me anyones instagram username to get their pfp</i>
+ ex : <b>feat.zai</b> , <b>z4iee</b> etc'''
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -43,7 +43,7 @@ def help_msg(update, context):
 
 def contact(update, context):
     keyboard = [[InlineKeyboardButton(
-        "Contact", url=f"telegram.me/{TELEGRAM_USERNAME}")], ]
+        "Contact", url=f"telegram.me/{featzai}")], ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -58,15 +58,15 @@ def username(update, context):
     chat_id = update.message.chat_id
     try:
         user = Profile.from_username(L.context, query)
-        caption_msg = f'''📛*Name*📛: {user.full_name} \n😁*Followers*😁: {user.followers} \n🤩*Following*🤩: {user.followees}\
-         \n🧐*Account Type*🧐: {acc_type(user.is_private)} \n\nThank You For Using The bot 😀😀'''
+        caption_msg = f'''*Name*: {user.full_name} \n*Followers*: {user.followers} \n*Following*: {user.followees}\
+         \n*Account Type*: {acc_type(user.is_private)} \n\nThank You For Using, Have a nice day :)'''
         context.bot.send_photo(
             chat_id=chat_id, photo=user.profile_pic_url,
             caption=caption_msg, parse_mode='MARKDOWN')
         msg.edit_text("finished.")
         time.sleep(5)
     except Exception:
-        msg.edit_text("Try again 😕😕 Check the username correctly")
+        msg.edit_text("Try again,Check the username correctly")
 
 
 def error(update, context):
